@@ -1,4 +1,4 @@
-package org.zerock.persistence;
+package com.yedam.board.persistence;
 
 import java.sql.Connection;
 import java.sql.SQLException;
