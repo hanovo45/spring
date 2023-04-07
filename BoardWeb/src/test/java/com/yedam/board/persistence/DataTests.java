@@ -1,8 +1,5 @@
 package com.yedam.board.persistence;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,23 +20,22 @@ public class DataTests {
 
 	@Setter(onMethod_ = @Autowired)
 	private DataSource dataSource;
-	
+
 	@Setter(onMethod_ = @Autowired)
 	private SqlSessionFactory sqlSessionFactory;
-	
+
 	@Test
 	public void dataSourceTest() {
-		
-		try {
 
+		try {
 //			Connection conn = dataSource.getConnection();
 //			log.info(conn);
 			SqlSession session = sqlSessionFactory.openSession();
 			log.info(session);
-			
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 }

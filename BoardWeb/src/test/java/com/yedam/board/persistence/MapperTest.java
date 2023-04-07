@@ -18,41 +18,40 @@ public class MapperTest {
 
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
-	
+
 	@Test
 	public void updateTest() {
 		BoardVO board = new BoardVO();
-		board.setTitle("6일");
-		board.setContent("성공");
-		board.setBno(5L);
+		board.setTitle("새글등록");
+		board.setContent("글본문입니다");
+		board.setBno(2L);
+
 		mapper.update(board);
+
+		log.info(board);
 	}
-	
-	//@Test
+
 	public void deleteTest() {
 		log.info(mapper.delete(3L) == 1 ? "성공" : "실패");
 	}
-	
-	//@Test
+
 	public void readTest() {
 		// 3(int) -> 3(Long)
 		BoardVO board = mapper.read(3L);
 		log.info(board);
+
 	}
-	
-	//@Test
+
 	public void insertTest() {
 		BoardVO board = new BoardVO();
 		board.setTitle("새글등록");
-		board.setContent("글 본문입니다");
+		board.setContent("글본문입니다");
 		board.setWriter("user03");
 		mapper.insertSelectKey(board);
+
 	}
-	
-	//@Test
+
 	public void testGetTime() {
-		
 		mapper.getList().forEach(board -> log.info(board));
 	}
-	
 }

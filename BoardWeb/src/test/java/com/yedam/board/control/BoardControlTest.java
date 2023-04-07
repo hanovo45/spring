@@ -21,7 +21,7 @@ import com.yedam.board.domain.BoardVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-@WebAppConfiguration // 컨트롤 테스트할때
+@WebAppConfiguration // 컨트롤 테스트용.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
@@ -34,76 +34,53 @@ public class BoardControlTest {
 
 	private MockMvc mockMvc; // url -> control -> .jsp
 
-	@Before // 테스트클래스 실행될때마다 먼저 호출
+	@Before // 테스트클래스 실행될 때 마다 먼저 호출.
 	public void setup() {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build(); // 인스턴스 호출
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build(); // 인스턴스 호출.
 	}
 
-	//@Test
-	public void getTest() {
-
-		RequestBuilder rb = MockMvcRequestBuilders.get("/board/get")//
-				.param("bno", "22");
-
-		try {
-			String vn = mockMvc.perform(rb)//
-					.andReturn()//
-					.getModelAndView()//
-					.getViewName();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	//@Test
-	public void removeTest() {	//삭제
+	@Test
+	public void removeTest() {
 		RequestBuilder rb = MockMvcRequestBuilders.post("/board/remove")//
-				.param("bno", "2");
-
+				.param("bno", "6");
 		try {
 			String vn = mockMvc.perform(rb)//
 					.andReturn()//
 					.getModelAndView()//
 					.getViewName();
-
 			log.info(vn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	// @Test
 	public void modifyTest() {
-		RequestBuilder rb = MockMvcRequestBuilders.post("/board/modify") //
-				.param("title", "수정") //
-				.param("content", "수정해봄") //
-				.param("writer", "user07") //
+		RequestBuilder rb = MockMvcRequestBuilders.post("/board/modify")//
+				.param("title", "새로운글입니다")//
+				.param("content", "여긴 글내용입니다")//
+				.param("writer", "user07")//
 				.param("bno", "1");
-
 		try {
 			String vn = mockMvc.perform(rb)//
 					.andReturn()//
 					.getModelAndView()//
 					.getViewName();
-
 			log.info(vn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// @Test
 	public void registerTest() {
-		RequestBuilder rb = MockMvcRequestBuilders.post("/board/register") //
-				.param("title", "새로운글입니다") //
-				.param("content", "여긴 글내용입니다") //
+		RequestBuilder rb = MockMvcRequestBuilders.post("/board/register")//
+				.param("title", "새로운글입니다")//
+				.param("content", "여긴 글내용입니다")//
 				.param("writer", "user07");
 
 		try {
-			String vn = mockMvc.perform(rb) //
-					.andReturn() //
-					.getModelAndView() //
+			String vn = mockMvc.perform(rb)//
+					.andReturn()//
+					.getModelAndView()//
 					.getViewName();
 
 			log.info(vn);
@@ -113,13 +90,12 @@ public class BoardControlTest {
 		}
 	}
 
-	//@Test
 	public void listTest() {
 		// /board/list
 		try {
-			ModelMap map = mockMvc.perform(MockMvcRequestBuilders.get("/board/list")) //
-					.andReturn() // 처리결과
-					.getModelAndView() // model에 저장된 정보처리
+			ModelMap map = mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))//
+					.andReturn()// 처리결과.
+					.getModelAndView()// model 에 저장된 정보처리.
 					.getModelMap();
 
 			List<BoardVO> list = (List<BoardVO>) map.get("list");
@@ -129,6 +105,6 @@ public class BoardControlTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
+
 }

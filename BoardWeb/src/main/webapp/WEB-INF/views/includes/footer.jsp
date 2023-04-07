@@ -6,9 +6,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="/resources/vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -25,11 +22,11 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
+    /* $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
         });
-    });
+    }); */
     </script>
 
 </body>
