@@ -1,37 +1,39 @@
 package com.yedam.app;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.lang.ProcessBuilder.Redirect;
 
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yedam.domain.BookVO;
+import com.yedam.service.BookService;
+
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
+@RequestMapping("/book/*")
 @Log4j
 public class BookController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
+	@Setter(onMethod_ = @Autowired)
+	private BookService bookSerivce;
+	
+	@RequestMapping(value = "register", method = RequestMethod.POST)
+	public String register(BookVO book, RedirectAttributes model) {
 		
-		return "index";
+		log.info("등록 구현?");
+		bookSerivce.register(book);
+//		model.addFlashAttribute("result",)
+		return "redirect:/book/list";
+	}
+	
+	@GetMapping("register")
+	public String register() {
+		return "/WEB-INF/views/index.jsp";
 	}
 }
