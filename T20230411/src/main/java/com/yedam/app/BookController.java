@@ -42,7 +42,7 @@ public class BookController {
 	
 	@RequestMapping("list")
 	public String list(BookVO vo) {
-		log.info("컨트롤 .. 목록조회");
+		log.info("컨트롤 .. 목록조회?");
 		List<BookVO> list = bookSerivce.getList(vo);		
 		
 		return "/WEB-INF/views/book/list.jsp";
