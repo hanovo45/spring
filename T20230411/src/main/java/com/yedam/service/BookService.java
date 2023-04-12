@@ -7,5 +7,5 @@ import com.yedam.domain.BookVO;
 public interface BookService {
 
 	public void register(BookVO book);	// 추가
-	public List<BookVO> getList(int bookNo);
+	public List<BookVO> getList(BookVO vo);
 }

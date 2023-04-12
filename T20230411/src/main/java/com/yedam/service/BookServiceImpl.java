@@ -24,10 +24,12 @@ public class BookServiceImpl implements BookService{
 		bookmapper.insert(book);
 	}
 
+
 	@Override
-	public List<BookVO> getList(int bookNo) {
+	public List<BookVO> getList(BookVO vo) {
 		log.info("조회 구현");
 		return bookmapper.getList();
+
 	}
 
 }
