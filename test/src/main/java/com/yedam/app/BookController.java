@@ -39,7 +39,7 @@ public class BookController {
 	@GetMapping("register")
 	public String register() {
 		
-		return "/WEB-INF/views/book/register.jsp";
+		return "/book/register";
 	}
 	
 	@RequestMapping({"list", "book/list"})
@@ -47,6 +47,6 @@ public class BookController {
 		List<BookVO> list = bookSerivce.getList(vo);		
 		System.out.println("vo");
 		System.out.println(vo);
-		return "/WEB-INF/views/book/list.jsp";
+		return "/book/list";
 	}
 }

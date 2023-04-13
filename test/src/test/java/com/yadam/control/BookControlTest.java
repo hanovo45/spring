@@ -16,9 +16,9 @@
 //import lombok.Setter;
 //import lombok.extern.log4j.Log4j;
 //
-////@WebAppConfiguration
-////@RunWith(SpringJUnit4ClassRunner.class)
-////@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/root-context.xml")
+//@WebAppConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/root-context.xml")
 //public class BookControlTest {
 //
 //	@Setter(onMethod_ = @Autowired)
